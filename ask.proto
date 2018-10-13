@@ -1,0 +1,12 @@
+syntax = "proto3";
+service Oracle {
+    rpc Reveal (Question) returns (Answer) {}
+}
+message Question {
+    string question = 1;
+    int32 user_id = 2;
+}
+message Answer {
+    string answer = 1;
+    string link = 2;
+}
