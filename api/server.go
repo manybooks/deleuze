@@ -5,6 +5,7 @@ import (
 	"net/http"
 
 	"github.com/labstack/echo"
+	client "github.com/manybooks/deleuze"
 )
 
 func main() {
@@ -15,5 +16,6 @@ func main() {
 
 func handleGet(c echo.Context) error {
 	text := c.QueryParam("text")
-	return c.String(http.StatusOK, fmt.Sprintf("You said %v.", text))
+	ans := client.Reveal(text)
+	return c.String(http.StatusOK, fmt.Sprintf("You said %v.", ans.Answer))
 }
